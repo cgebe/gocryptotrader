@@ -75,7 +75,7 @@ func (b *Bitfinex) GetTrades(currencyPair string, values url.Values) ([]Trade, e
 	)
 	err := common.SendHTTPGetRequest(path, true, b.Verbose, &response)
 	if err != nil {
-		return nil, fmt.Errorf("request failed: %#v", response)
+		return nil, fmt.Errorf("request failed: %s", err)
 	}
 	trades, err := NewTradeListFromResponse(response)
 	return trades, err
