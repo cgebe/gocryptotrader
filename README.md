@@ -30,6 +30,7 @@ Join our slack to discuss all things related to GoCryptoTrader! [GoCryptoTrader 
 | COINUT | Yes | No | NA |
 | GDAX(Coinbase) | Yes | Yes | No|
 | Gemini | Yes | NA | NA |
+| HitBTC | Yes | Yes | NA |
 | Huobi.Pro | Yes | No |No |
 | ItBit | Yes | NA | NA |
 | Kraken | Yes | NA | NA |
@@ -41,6 +42,7 @@ Join our slack to discuss all things related to GoCryptoTrader! [GoCryptoTrader 
 | OKEX | Yes | No | No |
 | Poloniex | Yes | Yes | NA |
 | WEX     | Yes  | NA        | NA  |
+| Yobit | Yes | NA | NA |
 
 We are aiming to support the top 20 highest volume exchanges based off the [CoinMarketCap exchange data](https://coinmarketcap.com/exchanges/volume/24-hour/).
 
@@ -85,7 +87,8 @@ platform.
 ```bash
 go get github.com/thrasher-/gocryptotrader
 cd $GOPATH/src/github.com/thrasher-/gocryptotrader
-go install
+make get
+make install
 cp $GOPATH/src/github.com/thrasher-/gocryptotrader/config_example.json $GOPATH/bin/config.json
 ```
 

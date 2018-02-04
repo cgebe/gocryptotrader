@@ -17,6 +17,7 @@ import (
 	"github.com/thrasher-/gocryptotrader/exchanges/coinut"
 	"github.com/thrasher-/gocryptotrader/exchanges/gdax"
 	"github.com/thrasher-/gocryptotrader/exchanges/gemini"
+        "github.com/thrasher-/gocryptotrader/exchanges/hitbtc"
 	"github.com/thrasher-/gocryptotrader/exchanges/huobi"
 	"github.com/thrasher-/gocryptotrader/exchanges/itbit"
 	"github.com/thrasher-/gocryptotrader/exchanges/kraken"
@@ -27,6 +28,7 @@ import (
 	"github.com/thrasher-/gocryptotrader/exchanges/okex"
 	"github.com/thrasher-/gocryptotrader/exchanges/poloniex"
 	"github.com/thrasher-/gocryptotrader/exchanges/wex"
+	"github.com/thrasher-/gocryptotrader/exchanges/yobit"
 )
 
 // vars related to exchange functions
@@ -149,6 +151,8 @@ func LoadExchange(name string) error {
 		exch = new(gdax.GDAX)
 	case "gemini":
 		exch = new(gemini.Gemini)
+	case "hitbtc":
+		exch = new(hitbtc.HitBTC)
 	case "huobi":
 		exch = new(huobi.HUOBI)
 	case "itbit":
@@ -171,6 +175,8 @@ func LoadExchange(name string) error {
 		exch = new(poloniex.Poloniex)
 	case "wex":
 		exch = new(wex.WEX)
+	case "yobit":
+		exch = new(yobit.Yobit)
 	default:
 		return ErrExchangeNotFound
 	}
