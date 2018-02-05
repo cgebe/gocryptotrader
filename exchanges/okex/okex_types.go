@@ -135,6 +135,16 @@ type SpotDepth struct {
 	Error  interface{}   `json:"error_code"`
 }
 
+// FutureTradeHistory will contain futures trade data
+type SpotTrade struct {
+	Amount float64 `json:"amount"`
+	Date   int64   `json:"date"`
+	MTS    int64   `json:"date_ms"`
+	Price  float64 `json:"price"`
+	TID    int64   `json:"tid"`
+	Type   string  `json:"type"`
+}
+
 // ActualSpotDepth better manipulated structure to return
 type ActualSpotDepth struct {
 	Asks []struct {

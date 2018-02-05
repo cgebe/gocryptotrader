@@ -613,6 +613,31 @@ func (o *OKEX) GetSpotTicker(symbol string) (SpotPrice, error) {
 	return resp, nil
 }
 
+// GetSpotTrades for symbol since transaction id
+//
+// symbol e.g. "btc_usd"
+// tid - transactionid
+func (o *OKEX) GetSpotTrades(symbol string, tid string) ([]SpotTrade, error) {
+	resp := []SpotTrade{}
+
+	if err := o.CheckSymbol(symbol); err != nil {
+		return resp, err
+	}
+
+	values := url.Values{}
+	values.Set("symbol", common.StringToLower(symbol))
+	values.Set("since", tid)
+
+	path := fmt.Sprintf("%s%s%s.do?%s", apiURL, apiVersion, spotTrade, values.Encode())
+
+	err := common.SendHTTPGetRequest(path, true, o.Verbose, &resp)
+	if err != nil {
+		return resp, err
+	}
+
+	return resp, nil
+}
+
 //GetSpotMarketDepth returns Market Depth
 func (o *OKEX) GetSpotMarketDepth(symbol, size string) (ActualSpotDepth, error) {
 	resp := SpotDepth{}
