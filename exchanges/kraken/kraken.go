@@ -283,9 +283,13 @@ func (k *Kraken) GetDepth(symbol string) (Orderbook, error) {
 }
 
 // GetTrades returns current trades on Kraken
-func (k *Kraken) GetTrades(symbol string) ([]RecentTrades, error) {
+func (k *Kraken) GetTrades(symbol, since string) ([]RecentTrades, string, error) {
 	values := url.Values{}
 	values.Set("pair", symbol)
+
+	if since != "" {
+		values.Set("since", since)
+	}
 
 	var recentTrades []RecentTrades
 	var result interface{}
@@ -294,7 +298,7 @@ func (k *Kraken) GetTrades(symbol string) ([]RecentTrades, error) {
 
 	err := common.SendHTTPGetRequest(path, true, k.Verbose, &result)
 	if err != nil {
-		return recentTrades, err
+		return recentTrades, "", err
 	}
 
 	data := result.(map[string]interface{})
@@ -320,7 +324,7 @@ func (k *Kraken) GetTrades(symbol string) ([]RecentTrades, error) {
 		}
 		recentTrades = append(recentTrades, r)
 	}
-	return recentTrades, nil
+	return recentTrades, data["last"].(string), nil
 }
 
 // GetSpread returns the full spread on Kraken
