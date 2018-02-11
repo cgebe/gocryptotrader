@@ -303,34 +303,39 @@ func (k *Kraken) GetTrades(symbol, since string) ([]RecentTrades, string, error)
 
 	var last string
 	data := result.(map[string]interface{})
+	fmt.Printf("%v", data)
 
-	for k, v := range data["result"].(map[string]interface{}) {
-		if k != "last" {
-			for _, x := range v.([]interface{}) {
-				r := RecentTrades{}
-				for i, y := range x.([]interface{}) {
-					switch i {
-					case 0:
-						r.Price, _ = strconv.ParseFloat(y.(string), 64)
-					case 1:
-						r.Volume, _ = strconv.ParseFloat(y.(string), 64)
-					case 2:
-						r.Time = y.(float64)
-					case 3:
-						r.BuyOrSell = y.(string)
-					case 4:
-						r.MarketOrLimit = y.(string)
-					case 5:
-						r.Miscellaneous = y.(string)
+	if len(data["error"].([]interface{})) > 0 {
+		return nil, "", fmt.Errorf("%s", data["error"].([]interface{})[0].(string))
+	} else {
+		for k, v := range data["result"].(map[string]interface{}) {
+			if k != "last" {
+				for _, x := range v.([]interface{}) {
+					r := RecentTrades{}
+					for i, y := range x.([]interface{}) {
+						switch i {
+						case 0:
+							r.Price, _ = strconv.ParseFloat(y.(string), 64)
+						case 1:
+							r.Volume, _ = strconv.ParseFloat(y.(string), 64)
+						case 2:
+							r.Time = y.(float64)
+						case 3:
+							r.BuyOrSell = y.(string)
+						case 4:
+							r.MarketOrLimit = y.(string)
+						case 5:
+							r.Miscellaneous = y.(string)
+						}
 					}
+					recentTrades = append(recentTrades, r)
 				}
-				recentTrades = append(recentTrades, r)
+			} else {
+				last = v.(string)
 			}
-		} else {
-			last = v.(string)
 		}
+		return recentTrades, last, nil
 	}
-	return recentTrades, last, nil
 }
 
 // GetSpread returns the full spread on Kraken
