@@ -23,7 +23,7 @@ func (b *BTCMarkets) Run() {
 		log.Printf("%s %d currencies enabled: %s.\n", b.GetName(), len(b.EnabledPairs), b.EnabledPairs)
 	}
 
-	if !common.DataContains(b.EnabledPairs, "AUD") || !common.DataContains(b.EnabledPairs, "AUD") {
+	if !common.StringDataContains(b.EnabledPairs, "AUD") || !common.StringDataContains(b.EnabledPairs, "AUD") {
 		enabledPairs := []string{}
 		for x := range b.EnabledPairs {
 			enabledPairs = append(enabledPairs, b.EnabledPairs[x]+"AUD")
@@ -53,7 +53,8 @@ func (b *BTCMarkets) Run() {
 // UpdateTicker updates and returns the ticker for a currency pair
 func (b *BTCMarkets) UpdateTicker(p pair.CurrencyPair, assetType string) (ticker.Price, error) {
 	var tickerPrice ticker.Price
-	tick, err := b.GetTicker(p.GetFirstCurrency().String())
+	tick, err := b.GetTicker(p.GetFirstCurrency().String(),
+		p.GetSecondCurrency().String())
 	if err != nil {
 		return tickerPrice, err
 	}
@@ -86,7 +87,8 @@ func (b *BTCMarkets) GetOrderbookEx(p pair.CurrencyPair, assetType string) (orde
 // UpdateOrderbook updates and returns the orderbook for a currency pair
 func (b *BTCMarkets) UpdateOrderbook(p pair.CurrencyPair, assetType string) (orderbook.Base, error) {
 	var orderBook orderbook.Base
-	orderbookNew, err := b.GetOrderbook(p.GetFirstCurrency().String())
+	orderbookNew, err := b.GetOrderbook(p.GetFirstCurrency().String(),
+		p.GetSecondCurrency().String())
 	if err != nil {
 		return orderBook, err
 	}
