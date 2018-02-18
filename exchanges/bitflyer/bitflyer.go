@@ -82,6 +82,7 @@ func (b *Bitflyer) SetDefaults() {
 	b.ConfigCurrencyPairFormat.Delimiter = "_"
 	b.ConfigCurrencyPairFormat.Uppercase = true
 	b.AssetTypes = []string{ticker.Spot}
+	b.APIUrl = japanURL
 }
 
 // Setup takes in the supplied exchange configuration details and sets params
