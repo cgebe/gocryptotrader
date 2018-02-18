@@ -303,7 +303,6 @@ func (k *Kraken) GetTrades(symbol, since string) ([]RecentTrades, string, error)
 
 	var last string
 	data := result.(map[string]interface{})
-	fmt.Printf("%v", data)
 
 	if len(data["error"].([]interface{})) > 0 {
 		return nil, "", fmt.Errorf("%s", data["error"].([]interface{})[0].(string))
