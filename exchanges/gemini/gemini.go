@@ -109,6 +109,7 @@ func (g *Gemini) SetDefaults() {
 	g.ConfigCurrencyPairFormat.Delimiter = ""
 	g.ConfigCurrencyPairFormat.Uppercase = true
 	g.AssetTypes = []string{ticker.Spot}
+	g.APIUrl = geminiAPIURL
 }
 
 // Setup sets exchange configuration parameters
@@ -139,6 +140,10 @@ func (g *Gemini) Setup(exch config.ExchangeConfig) {
 			log.Fatal(err)
 		}
 	}
+}
+
+func (g *Gemini) PrintAPI() {
+	fmt.Println(g.APIUrl)
 }
 
 // GetSymbols returns all available symbols for trading
