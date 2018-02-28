@@ -108,8 +108,10 @@ func (b *BTCC) GetTicker(currencyPair string) (Ticker, error) {
 // time - returns trade records starting from unix time 1406794449
 func (b *BTCC) GetTradeHistory(currencyPair string, limit, sinceTid int64, time time.Time) ([]Trade, error) {
 	trades := []Trade{}
-	req := fmt.Sprintf("%s/data/pro/historydata?symbol=%s", btccAPIUrl, currencyPair)
+	req := fmt.Sprintf("%s/data/pro/historydata", btccAPIUrl)
 	v := url.Values{}
+
+	v.Set("symbol", currencyPair)
 
 	if limit > 0 {
 		v.Set("limit", strconv.FormatInt(limit, 10))

@@ -329,6 +329,7 @@ func SendHTTPGetRequest(url string, jsonDecode, isVerbose bool, result interface
 	}
 
 	if res.StatusCode != 200 {
+		fmt.Printf("%v", res.Body)
 		return fmt.Errorf("common.SendHTTPGetRequest() error: HTTP status code %d", res.StatusCode)
 	}
 
