@@ -201,21 +201,14 @@ func (b *Binance) GetRecentTrades(symbol string, limit int64) ([]RecentTrade, er
 func (b *Binance) GetHistoricalTrades(symbol string, limit, fromID int64) ([]HistoricalTrade, error) {
 	resp := []HistoricalTrade{}
 
-	if err := b.CheckLimit(limit); err != nil {
-		return resp, err
-	}
-	if err := b.CheckSymbol(symbol); err != nil {
-		return resp, err
-	}
-
 	params := url.Values{}
 	params.Set("symbol", common.StringToUpper(symbol))
 	params.Set("limit", strconv.FormatInt(limit, 10))
-	params.Set("fromid", strconv.FormatInt(fromID, 10))
+	params.Set("fromId", strconv.FormatInt(fromID, 10))
 
 	path := fmt.Sprintf("%s%s?%s", apiURL, historicalTrades, params.Encode())
 
-	return resp, common.SendHTTPGetRequest(path, true, b.Verbose, &resp)
+	return resp, b.SendAuthHTTPRequest("GET", path, params, &resp)
 }
 
 // GetAggregatedTrades returns aggregated trade activity
