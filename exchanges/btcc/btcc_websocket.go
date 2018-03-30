@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/cgebe/gocryptotrader/common"
-	"github.com/cgebe/socketio"
+	"github.com/thrasher-/socketio"
 )
 
 const (

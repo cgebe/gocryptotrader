@@ -116,7 +116,7 @@ func (b *BTCC) GetTradeHistory(currencyPair string, limit, sinceTid int64, time 
 	if limit > 0 {
 		v.Set("limit", strconv.FormatInt(limit, 10))
 	}
-	if sinceTid > 0 {
+	if sinceTid >= 0 {
 		v.Set("since", strconv.FormatInt(sinceTid, 10))
 	}
 	if !time.IsZero() {
