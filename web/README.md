@@ -1,6 +1,6 @@
 # GoCryptoTrader Website
 
-<img src="https://github.com/thrasher-/gocryptotrader/blob/master/web/src/assets/page-logo.png?raw=true" width="350px" height="350px" hspace="70">
+<img src="https://github.com/cgebe/gocryptotrader/blob/master/web/src/assets/page-logo.png?raw=true" width="350px" height="350px" hspace="70">
 
 A website interface to interact with the main GoCryptoTrader application. It is developed with Angular 4 with support for Electron
 

@@ -33,7 +33,7 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/thrasher-/socketio"
+  name = "github.com/cgebe/socketio"
   packages = ["."]
   revision = "38b9599889b97e3f897b32ca075eff4e5338342b"
 

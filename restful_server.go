@@ -6,10 +6,10 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/thrasher-/gocryptotrader/config"
-	exchange "github.com/thrasher-/gocryptotrader/exchanges"
-	"github.com/thrasher-/gocryptotrader/exchanges/orderbook"
-	"github.com/thrasher-/gocryptotrader/exchanges/ticker"
+	"github.com/cgebe/gocryptotrader/config"
+	exchange "github.com/cgebe/gocryptotrader/exchanges"
+	"github.com/cgebe/gocryptotrader/exchanges/orderbook"
+	"github.com/cgebe/gocryptotrader/exchanges/ticker"
 )
 
 // AllEnabledExchangeOrderbooks holds the enabled exchange orderbooks

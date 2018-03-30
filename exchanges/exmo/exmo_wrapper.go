@@ -4,11 +4,11 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/thrasher-/gocryptotrader/common"
-	"github.com/thrasher-/gocryptotrader/currency/pair"
-	exchange "github.com/thrasher-/gocryptotrader/exchanges"
-	"github.com/thrasher-/gocryptotrader/exchanges/orderbook"
-	"github.com/thrasher-/gocryptotrader/exchanges/ticker"
+	"github.com/cgebe/gocryptotrader/common"
+	"github.com/cgebe/gocryptotrader/currency/pair"
+	exchange "github.com/cgebe/gocryptotrader/exchanges"
+	"github.com/cgebe/gocryptotrader/exchanges/orderbook"
+	"github.com/cgebe/gocryptotrader/exchanges/ticker"
 )
 
 // Start starts the EXMO go routine

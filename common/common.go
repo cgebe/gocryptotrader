@@ -297,7 +297,7 @@ func SendHTTPRequest(method, path string, headers map[string]string, body io.Rea
 	for k, v := range headers {
 		req.Header.Add(k, v)
 	}
-
+	fmt.Printf("%v", req)
 	httpClient := &http.Client{}
 	resp, err := httpClient.Do(req)
 

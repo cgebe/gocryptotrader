@@ -9,10 +9,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/thrasher-/gocryptotrader/common"
-	"github.com/thrasher-/gocryptotrader/config"
-	exchange "github.com/thrasher-/gocryptotrader/exchanges"
-	"github.com/thrasher-/gocryptotrader/exchanges/ticker"
+	"github.com/cgebe/gocryptotrader/common"
+	"github.com/cgebe/gocryptotrader/config"
+	exchange "github.com/cgebe/gocryptotrader/exchanges"
+	"github.com/cgebe/gocryptotrader/exchanges/ticker"
 )
 
 // Binance is the overarching type across the Bithumb package
@@ -208,7 +208,7 @@ func (b *Binance) GetHistoricalTrades(symbol string, limit, fromID int64) ([]His
 
 	path := fmt.Sprintf("%s%s?%s", apiURL, historicalTrades, params.Encode())
 
-	return resp, b.SendAuthHTTPRequest("GET", path, params, &resp)
+	return resp, b.SendHybridHTTPRequest("GET", path, params, &resp)
 }
 
 // GetAggregatedTrades returns aggregated trade activity
@@ -458,6 +458,34 @@ func (b *Binance) SendAuthHTTPRequest(method, path string, params url.Values, re
 
 	if err = common.JSONDecode([]byte(resp), &result); err != nil {
 		return errors.New("sendAuthenticatedHTTPRequest: Unable to JSON Unmarshal response." + err.Error())
+	}
+	return nil
+}
+
+// SendAuthHTTPRequest something
+func (b *Binance) SendHybridHTTPRequest(method, path string, params url.Values, result interface{}) error {
+	if params == nil {
+		params = url.Values{}
+	}
+
+	headers := make(map[string]string)
+	headers["X-MBX-APIKEY"] = b.APIKey
+
+	if b.Verbose {
+		log.Printf("sent path: \n%s\n", path)
+	}
+
+	resp, err := common.SendHTTPRequest(method, path, headers, nil)
+	if err != nil {
+		return err
+	}
+
+	if b.Verbose {
+		log.Printf("Received raw: \n%s\n", resp)
+	}
+
+	if err = common.JSONDecode([]byte(resp), &result); err != nil {
+		return errors.New("sendHybridHTTPRequest: Unable to JSON Unmarshal response." + err.Error())
 	}
 	return nil
 }

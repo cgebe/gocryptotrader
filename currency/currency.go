@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/thrasher-/gocryptotrader/common"
-	"github.com/thrasher-/gocryptotrader/currency/pair"
+	"github.com/cgebe/gocryptotrader/common"
+	"github.com/cgebe/gocryptotrader/currency/pair"
 )
 
 // Rate holds the current exchange rates for the currency pair.

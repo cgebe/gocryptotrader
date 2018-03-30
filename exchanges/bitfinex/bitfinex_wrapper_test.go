@@ -3,8 +3,8 @@ package bitfinex
 import (
 	"testing"
 
-	"github.com/thrasher-/gocryptotrader/currency/pair"
-	"github.com/thrasher-/gocryptotrader/exchanges/ticker"
+	"github.com/cgebe/gocryptotrader/currency/pair"
+	"github.com/cgebe/gocryptotrader/exchanges/ticker"
 )
 
 func TestStart(t *testing.T) {

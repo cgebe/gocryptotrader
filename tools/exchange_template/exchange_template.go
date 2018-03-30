@@ -9,8 +9,8 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/thrasher-/gocryptotrader/common"
-	"github.com/thrasher-/gocryptotrader/config"
+	"github.com/cgebe/gocryptotrader/common"
+	"github.com/cgebe/gocryptotrader/config"
 )
 
 const (

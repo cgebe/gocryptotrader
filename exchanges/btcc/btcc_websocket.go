@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/thrasher-/gocryptotrader/common"
-	"github.com/thrasher-/socketio"
+	"github.com/cgebe/gocryptotrader/common"
+	"github.com/cgebe/socketio"
 )
 
 const (

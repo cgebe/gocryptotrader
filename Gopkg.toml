@@ -35,7 +35,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/thrasher-/socketio"
+  name = "github.com/cgebe/socketio"
 
 [[constraint]]
   branch = "master"

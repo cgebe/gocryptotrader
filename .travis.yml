@@ -13,7 +13,7 @@ script:
 install:
  - go get github.com/gorilla/websocket
  - go get github.com/toorop/go-pusher
- - go get github.com/thrasher-/socketio
+ - go get github.com/cgebe/socketio
  - go get github.com/beatgammit/turnpike
  - go get github.com/gorilla/mux
 
