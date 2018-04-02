@@ -66,11 +66,13 @@ type OpenHighLowClose struct {
 
 // RecentTrades holds recent trade data
 type RecentTrades struct {
+	ID            string
 	Price         float64
 	Volume        float64
 	Time          float64
 	BuyOrSell     string
 	MarketOrLimit string
+	Last          string
 	Miscellaneous interface{}
 }
 
