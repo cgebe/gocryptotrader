@@ -55,11 +55,12 @@ type Orderbook struct {
 }
 
 type TradeHistory struct {
-	Id        int64   `json:"id"`              // Trade id
-	Timestamp string  `json:"timestamp"`       // Trade timestamp
-	Side      string  `json:"side"`            // Trade side sell or buy
-	Price     float64 `json:"price,string"`    // Trade price
-	Quantity  float64 `json:"quantity,string"` // Trade quantity
+	Id            int64   `json:"id"`              // Trade id
+	Timestamp     string  `json:"timestamp"`       // Trade timestamp
+	Side          string  `json:"side"`            // Trade side sell or buy
+	Price         float64 `json:"price,string"`    // Trade price
+	Quantity      float64 `json:"quantity,string"` // Trade quantity
+	NanoTimestamp int64   `json:"nts"`
 }
 
 type ChartData struct {

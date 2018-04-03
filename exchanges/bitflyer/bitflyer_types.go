@@ -92,6 +92,7 @@ type ExecutedTrade struct {
 	ExecDate       string  `json:"exec_date"`
 	BuyAcceptedID  string  `json:"buy_child_order_acceptance_id"`
 	SellAcceptedID string  `json:"sell_child_order_acceptance_id"`
+	NanoTimestamp  int64   `json:"nts"`
 }
 
 // ChatLog holds chat log information

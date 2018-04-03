@@ -45,6 +45,7 @@ type PoloniexTradeHistory struct {
 	Rate          float64 `json:"rate,string"`
 	Amount        float64 `json:"amount,string"`
 	Total         float64 `json:"total,string"`
+	NanoTimestamp int64   `json:"nts"`
 }
 
 type PoloniexChartData struct {
